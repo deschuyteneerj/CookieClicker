@@ -1,47 +1,102 @@
 (() => { 
     let score = 0;
+    let multiple = 1;
+    let factor = 2;
+    let multiplicatorPrice = 10;
+    let autoClickPrice = 10;
+    let bonusPrice = 10;
+    let bonus = 1;
+    let quantityOfAutoclick = 0;
     let scoreHTML = document.getElementById("score");
-    let multiplicatorCheck = {'part-1': 0, 'part-2': 0, 'part-3': 0, 'part-4': 0, 'part-5': 0, 'part-6': 0, 'part-7': 0, 'part-8': 0, 'part-9': 0, 'autoClick': 0};
-    let prices = [10,100,1000,10000,100000,10000000,1000000000,1000000000,10000000000,100000000000];
-    let buttons = document.querySelectorAll("[id^='part-']");
-    for (button of buttons){
-        button.disabled = true;
-    }
+    document.getElementById("multiplicator").innerHTML = "x"+factor+" Price: "+multiplicatorPrice;
+    
+    let b_multiplicator = document.getElementById('multiplicator');
+    b_multiplicator.disabled = true;
+
+    let b_autoClick = document.getElementById('autoClick');
+    b_autoClick.disabled = true;
+    b_autoClick.innerHTML = quantityOfAutoclick+" click(s)/s Price: "+autoClickPrice;
+
+    let b_bonus = document.getElementById('bonus');
+    b_bonus.disabled = true;
+
+
+
     document.getElementById('autoClick').disabled = true;
     document.getElementById('bonus').disabled = true;
 
-    function incrementScore (){
-        let multiple = 1;
+    scoreHTML.innerHTML=score;
 
-        for (const [key, value] of Object.entries(multiplicatorCheck)) {
-            if(value){
-                multiple = multiple * value;
-            }
-        }
+    function incrementScore (){
+        
         score += 1 * multiple;
         scoreHTML.innerHTML=score;
+    }
+
+    function incrementMultiplicator(){
+        multiple = multiple * factor * bonus;
     }
 
 
     document.getElementById("clickMe").addEventListener("click", () => {
         incrementScore();
-
-        switch(true){
-            case score > 5 && multiplicatorCheck['part-1'] == 0: document.getElementById('part-1').disabled = false;break;
-            case score > 100 && multiplicatorCheck['part-2'] == 0: document.getElementById('part-2').disabled = false;break;
-            case score > 1000 && multiplicatorCheck['part-3'] == 0: document.getElementById('part-3').disabled = false;break;
-            case score > 10000 && multiplicatorCheck['part-4'] == 0: document.getElementById('part-4').disabled = false;break;
-            case score > 100000 && multiplicatorCheck['part-5'] == 0: document.getElementById('part-5').disabled = false;break;
-            case score > 1000000 && multiplicatorCheck['part-6'] == 0: document.getElementById('part-6').disabled = false;break;
-            case score > 10000000 && multiplicatorCheck['part-7'] == 0: document.getElementById('part-7').disabled = false;break;
-            case score > 100000000 && multiplicatorCheck['part-8'] == 0: document.getElementById('part-8').disabled = false;break;
-            case score > 1000000000 && multiplicatorCheck['part-9'] == 0: document.getElementById('part-9').disabled = false;break;
-            case score > 10000000000 && multiplicatorCheck['part-10'] == 0: document.getElementById('autoClick').disabled = false;break;
-        }
+        checkAvailability();
+        
     });
 
-    document.getElementById("part-1").addEventListener("click", () => {
-        
+    document.getElementById("multiplicator").addEventListener("click", () => {
+        incrementMultiplicator();
+        score = score - multiplicatorPrice;
+        scoreHTML.innerHTML=score;
+        checkAvailability();
+        multiplicatorPrice = multiplicatorPrice * factor**2;
+        factor = factor * 2;
+        document.getElementById("multiplicator").innerHTML = "x"+factor+" Price: "+multiplicatorPrice;
+        b_multiplicator.disabled = true;
+    });
+
+    function checkAvailability(){
+        if(score >= multiplicatorPrice){
+            b_multiplicator.disabled = false;
+        }
+        else{b_multiplicator.disabled = true;}
+
+        if(score >= autoClickPrice){
+            b_autoClick.disabled = false;
+        }
+        else{b_autoClick.disabled = true;}
+
+        if(score >= bonusPrice){
+            b_bonus.disabled = false;
+        }
+        else{b_bonus.disabled = true;}
+    }
+
+    function click(){
+        document.getElementById("clickMe").click();
+    }
+
+    document.getElementById("autoClick").addEventListener("click", () => {
+        score = score - autoClickPrice;
+        scoreHTML.innerHTML=score;
+        b_autoClick.disabled = true;
+        autoClickPrice = autoClickPrice * 100;
+        quantityOfAutoclick++;
+        b_autoClick.innerHTML = quantityOfAutoclick+" click(s)/s Price: "+autoClickPrice;
+        checkAvailability();
+        setInterval(() => {
+            click();
+        }, 1000);
+    });
+
+    document.getElementById("bonus").addEventListener("click", () => {
+        bonus = 2;
+        let timeLeft = 30;
+        setInterval(() => {
+            timeLeft--;
+            document.getElementById('timer').innerHTML = timeLeft;
+        }, 1000);
+        setTimeout(()=>{bonus = 1;},30000);
     });
 
 })();
