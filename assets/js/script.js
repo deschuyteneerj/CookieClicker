@@ -6,6 +6,7 @@
     let autoClickPrice = 10;
     let bonusPrice = 10;
     let bonus = 1;
+    let bonusRunning = false;
     let quantityOfAutoclick = 0;
     let scoreHTML = document.getElementById("score");
     document.getElementById("multiplicator").innerHTML = "x"+factor+" Price: "+multiplicatorPrice;
@@ -29,12 +30,12 @@
 
     function incrementScore (){
         
-        score += 1 * multiple;
+        score += 1 * multiple * bonus;
         scoreHTML.innerHTML=score;
     }
 
     function incrementMultiplicator(){
-        multiple = multiple * factor * bonus;
+        multiple = multiple * factor;
     }
 
 
@@ -66,7 +67,7 @@
         }
         else{b_autoClick.disabled = true;}
 
-        if(score >= bonusPrice){
+        if(score >= bonusPrice && bonusRunning != true){
             b_bonus.disabled = false;
         }
         else{b_bonus.disabled = true;}
@@ -90,13 +91,24 @@
     });
 
     document.getElementById("bonus").addEventListener("click", () => {
+        score = score - bonusPrice;
+        scoreHTML.innerHTML=score;
+        b_bonus.disabled = true;
+        bonusRunning = true;
+        checkAvailability();
         bonus = 2;
         let timeLeft = 30;
-        setInterval(() => {
+        var a = setInterval(() => {
             timeLeft--;
             document.getElementById('timer').innerHTML = timeLeft;
         }, 1000);
-        setTimeout(()=>{bonus = 1;},30000);
+        setTimeout(()=>{
+            bonus = 1;
+            clearInterval(a);
+            document.getElementById('timer').innerHTML = '';
+            b_bonus.disabled = false;
+            bonusRunning = false;
+        },30000);   
     });
 
 })();
