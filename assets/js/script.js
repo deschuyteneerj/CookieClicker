@@ -21,9 +21,6 @@
     let b_bonus = document.getElementById('bonus');
     b_bonus.disabled = true;
 
-    document.getElementById("clickMe").innerHTML = '<img src="./assets/img/button-covid-19.png"></img>';
-
-
 
     document.getElementById('autoClick').disabled = true;
     document.getElementById('bonus').disabled = true;
