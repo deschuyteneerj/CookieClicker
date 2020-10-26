@@ -95,6 +95,7 @@
         scoreHTML.innerHTML=score;
         b_bonus.disabled = true;
         bonusRunning = true;
+        bonusPrice = bonusPrice * 100;
         checkAvailability();
         bonus = 2;
         let timeLeft = 30;
@@ -110,5 +111,4 @@
             bonusRunning = false;
         },30000);   
     });
-
 })();
