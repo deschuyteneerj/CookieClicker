@@ -8,10 +8,13 @@ body {
 
 .interfaceContainer{
     height: 50vh;
+    width: 90vw;
+    margin: 0px auto;
 }
 
 .container {
     height: 100vh;
+    margin: 0px;
 }
 
 #clickMe > img{
@@ -19,9 +22,14 @@ height: 60vh;
 width: 33.75vw;
 }
 
+#clickMe:hover{
+    filter: brightness(0.8);
+}
+
 #clickMe:active{
     border:none;
     outline: none;
+    transform: translateY(2px);
 }
 
 #clickMe:focus{
@@ -84,7 +92,10 @@ button {
     text-align: left;
     line-height: 32px;
     font-weight: bold;
-    width:100rem;
+}
+
+.title{
+    margin-left: 1rem;
 }
 
 .buttonsContainer {
@@ -94,5 +105,4 @@ button {
     text-align: left;
     line-height: 32px;
     font-weight: bold;
-    width:100rem;
 }
