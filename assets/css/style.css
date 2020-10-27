@@ -1,0 +1,98 @@
+body {
+    background-image: url(../img/corona_sans_virus.png);
+    background-attachment: fixed;
+    background-size: cover;
+    background-position-y: center;
+    background-position-x: center;
+}
+
+.interfaceContainer{
+    height: 50vh;
+}
+
+.container {
+    height: 100vh;
+}
+
+#clickMe > img{
+height: 60vh;
+width: 33.75vw;
+}
+
+#clickMe:active{
+    border:none;
+    outline: none;
+}
+
+#clickMe:focus{
+    outline: none;
+}
+
+#clickMe {
+    background-color:transparent;
+    border: none;
+    position: fixed;
+    top: 20vh;
+    left: 32vw;
+    z-index: 2;
+}
+
+button:disabled,
+button[disabled]{
+  border: 1px solid #999999;
+  background-color: #919191;
+  color: #4e4e4e;
+  border-radius: 10px;
+}
+
+button {
+  border: solid 2px white;
+  background-color: #000000;
+  color: rgb(255, 255, 255);
+  border-radius: 10px;
+  font-weight: bold;
+  padding: 10px;
+}
+
+#score{
+    display: block;
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+    border: solid 2px white;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 32px;
+    font-weight: bold;
+}
+
+#timer{
+    display: block;
+    border: solid 1px white;
+    background-color: #000000;
+    color: rgb(255, 124, 2);
+    border-radius: 10px;
+    text-align: center;
+    line-height: 32px;
+    font-weight: bold;
+}
+
+
+.titleContainer {
+    display: block;
+    background-color: #000000b2;
+    color: rgb(255, 255, 255);
+    text-align: left;
+    line-height: 32px;
+    font-weight: bold;
+    width:100rem;
+}
+
+.buttonsContainer {
+    display: block;
+    background-color: #000000b2;
+    color: rgb(255, 255, 255);
+    text-align: left;
+    line-height: 32px;
+    font-weight: bold;
+    width:100rem;
+}

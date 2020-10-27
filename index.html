@@ -14,26 +14,29 @@
 </head>
 
 <body>
-
+    <button id="clickMe" type="button"><img class="planet" src="assets/img/virus.png"></button>
     <div class="container">
         <div class="row">
-            <p id="score"></p>
-        </div>
-        <div class="row">
-            <div class="col-12">
-                <button id="clickMe" type="button">Click me</button>
+            <div class="offset-4 col-4 mt-4">
+                <p id="score"></p>
             </div>
         </div>
-        <div class="row">
-            <div class="col-4">
-                <button id="multiplicator">Multi</button>
+        <div class="row interfaceContainer">
+            <div class="col-6 titleContainer">
+                <h1 class="h3 title mt-3 mr-2">Combat Corona POWER</h1>
+                <p class="rules mt-3 mr-3">Rules</p>
             </div>
-            <div class="col-4">
-                <button id="autoClick">AutoClick</button>
-            </div>
-            <div class="col-4">
-                <button id="bonus">Bonus</button>
-                <p id="timer"></p>
+            <div class="col-6 d-flex flex-column align-items-end buttonsContainer">
+                <div class="mt-auto mb-auto">
+                    <button id="multiplicator">Multi</button>
+                </div>
+                <div class="mt-auto mb-auto">
+                    <button id="autoClick">AutoClick</button>
+                </div>
+                <div class="mt-auto mb-auto">
+                    <button id="bonus">Bonus</button>
+                    <p id="timer"></p>
+                </div>
             </div>
         </div>
     </div>
