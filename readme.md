@@ -2,10 +2,10 @@
 
 ## Collaborators
 
-[Julien](https://github.com/Gabrielju)
-[Joann](https://github.com/DelahayJoann)
-[Jonathan](https://github.com/deschuyteneerj/)
-[Florence](https://github.com/FlorenceJacobs)
+- [Julien](https://github.com/Gabrielju)
+- [Joann](https://github.com/DelahayJoann)
+- [Jonathan](https://github.com/deschuyteneerj/)
+- [Florence](https://github.com/FlorenceJacobs)
 
 ## Missions objectives
 
