@@ -9,28 +9,27 @@
     let bonusRunning = false;
     let quantityOfAutoclick = 0;
     let scoreHTML = document.getElementById("score");
-    document.getElementById("multiplicator").innerHTML = "x"+factor+" Price: "+multiplicatorPrice;
+    document.getElementById('timer').style.visibility = "hidden";
+    document.getElementById("multiplicator").innerHTML = factor+"x more vaccines/click - Cost: "+multiplicatorPrice;
     
     let b_multiplicator = document.getElementById('multiplicator');
     b_multiplicator.disabled = true;
 
     let b_autoClick = document.getElementById('autoClick');
     b_autoClick.disabled = true;
-    b_autoClick.innerHTML = quantityOfAutoclick+" click(s)/s Price: "+autoClickPrice;
+    b_autoClick.innerHTML = quantityOfAutoclick+" click(s)/s - Cost: "+autoClickPrice;
 
     let b_bonus = document.getElementById('bonus');
     b_bonus.disabled = true;
 
+    b_bonus.innerHTML= "Vaccination campaign - Cost " + bonusPrice;
 
-    document.getElementById('autoClick').disabled = true;
-    document.getElementById('bonus').disabled = true;
-
-    scoreHTML.innerHTML=score;
+    scoreHTML.innerHTML= "Vaccine rate:  " + score;
 
     function incrementScore (){
         
         score += 1 * multiple * bonus;
-        scoreHTML.innerHTML=score;
+        scoreHTML.innerHTML= "Vaccine rate:  " + score;
     }
 
     function incrementMultiplicator(){
@@ -47,11 +46,11 @@
     document.getElementById("multiplicator").addEventListener("click", () => {
         incrementMultiplicator();
         score = score - multiplicatorPrice;
-        scoreHTML.innerHTML=score;
+        scoreHTML.innerHTML= "Vaccine rate:  " + score;
         checkAvailability();
         multiplicatorPrice = multiplicatorPrice * factor**2;
         factor = factor * 2;
-        document.getElementById("multiplicator").innerHTML = "x"+factor+" Price: "+multiplicatorPrice;
+        document.getElementById("multiplicator").innerHTML = factor+"x more vaccines/click - Cost: "+multiplicatorPrice;
         b_multiplicator.disabled = true;
     });
 
@@ -78,11 +77,11 @@
 
     document.getElementById("autoClick").addEventListener("click", () => {
         score = score - autoClickPrice;
-        scoreHTML.innerHTML=score;
+        scoreHTML.innerHTML= "Vaccine rate:  " + score;
         b_autoClick.disabled = true;
         autoClickPrice = autoClickPrice * 100;
         quantityOfAutoclick++;
-        b_autoClick.innerHTML = quantityOfAutoclick+" click(s)/s Price: "+autoClickPrice;
+        b_autoClick.innerHTML = quantityOfAutoclick+" click(s)/s - Cost: "+autoClickPrice;
         checkAvailability();
         setInterval(() => {
             click();
@@ -91,7 +90,9 @@
 
     document.getElementById("bonus").addEventListener("click", () => {
         score = score - bonusPrice;
-        scoreHTML.innerHTML=score;
+        scoreHTML.innerHTML= "Vaccine rate:  " + score;
+        document.getElementById('timer').style.visibility = "visible";
+        b_bonus.innerHTML= "Vaccination campaign - Cost " + bonusPrice;
         b_bonus.disabled = true;
         bonusRunning = true;
         bonusPrice = bonusPrice * 100;
@@ -108,6 +109,7 @@
             document.getElementById('timer').innerHTML = '';
             b_bonus.disabled = false;
             bonusRunning = false;
+            document.getElementById('timer').style.visibility = "hidden";
         },30000);   
     });
 })();
