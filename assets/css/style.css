@@ -12,14 +12,14 @@ body {
     margin: 0px auto;
 }
 
-.container {
+.container-fluid {
     height: 100vh;
     margin: 0px;
 }
 
 #clickMe > img{
-height: 60vh;
-width: 33.75vw;
+    height: 60vh;
+    width: 33.75vw;
 }
 
 #clickMe:hover{
@@ -47,19 +47,19 @@ width: 33.75vw;
 
 button:disabled,
 button[disabled]{
-  border: 1px solid #999999;
-  background-color: #919191;
-  color: #4e4e4e;
-  border-radius: 10px;
+    border: 1px solid #999999;
+    background-color: #919191;
+    color: #4e4e4e;
+    border-radius: 10px;
 }
 
 button {
-  border: solid 2px white;
-  background-color: #000000;
-  color: rgb(255, 255, 255);
-  border-radius: 10px;
-  font-weight: bold;
-  padding: 10px;
+    border: solid 2px white;
+    background-color: #000000;
+    color: rgb(255, 255, 255);
+    border-radius: 10px;
+    font-weight: bold;
+    padding: 10px;
 }
 
 #score{
