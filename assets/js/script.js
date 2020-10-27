@@ -92,10 +92,10 @@
         score = score - bonusPrice;
         scoreHTML.innerHTML= "Vaccine rate:  " + score;
         document.getElementById('timer').style.visibility = "visible";
-        b_bonus.innerHTML= "Vaccination campaign - Cost " + bonusPrice;
         b_bonus.disabled = true;
         bonusRunning = true;
         bonusPrice = bonusPrice * 100;
+        b_bonus.innerHTML= "Vaccination campaign - Cost " + bonusPrice;
         checkAvailability();
         bonus = 2;
         let timeLeft = 30;
