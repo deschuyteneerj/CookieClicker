@@ -8,12 +8,13 @@
     let bonus = 1;
     let bonusRunning = false;
     let quantityOfAutoclick = 0;
+
     let scoreHTML = document.getElementById("score");
-    document.getElementById('timer').style.visibility = "hidden";
-    document.getElementById("multiplicator").innerHTML = factor+"x more vaccines/click - Cost: "+multiplicatorPrice;
-    
+    scoreHTML.innerHTML= "Vaccine rate:  " + score;
+
     let b_multiplicator = document.getElementById('multiplicator');
     b_multiplicator.disabled = true;
+    b_multiplicator.innerHTML = factor+"x more vaccines/click - Cost: "+multiplicatorPrice;
 
     let b_autoClick = document.getElementById('autoClick');
     b_autoClick.disabled = true;
@@ -21,39 +22,22 @@
 
     let b_bonus = document.getElementById('bonus');
     b_bonus.disabled = true;
-
     b_bonus.innerHTML= "Vaccination campaign - Cost " + bonusPrice;
 
-    scoreHTML.innerHTML= "Vaccine rate:  " + score;
+    document.getElementById('timer').style.visibility = "hidden";
 
+    //Function to increment the score
     function incrementScore (){
-        
         score += 1 * multiple * bonus;
         scoreHTML.innerHTML= "Vaccine rate:  " + score;
     }
 
+    //Function to increase the multiplicator
     function incrementMultiplicator(){
         multiple = multiple * factor;
     }
 
-
-    document.getElementById("clickMe").addEventListener("click", () => {
-        incrementScore();
-        checkAvailability();
-        
-    });
-
-    document.getElementById("multiplicator").addEventListener("click", () => {
-        incrementMultiplicator();
-        score = score - multiplicatorPrice;
-        scoreHTML.innerHTML= "Vaccine rate:  " + score;
-        checkAvailability();
-        multiplicatorPrice = multiplicatorPrice * factor**2;
-        factor = factor * 2;
-        document.getElementById("multiplicator").innerHTML = factor+"x more vaccines/click - Cost: "+multiplicatorPrice;
-        b_multiplicator.disabled = true;
-    });
-
+    //Function to check the availibility of the buttons
     function checkAvailability(){
         if(score >= multiplicatorPrice){
             b_multiplicator.disabled = false;
@@ -71,10 +55,30 @@
         else{b_bonus.disabled = true;}
     }
 
+    //Function click of autoClick
     function click(){
         document.getElementById("clickMe").click();
     }
 
+    //Button Earth
+    document.getElementById("clickMe").addEventListener("click", () => {
+        incrementScore();
+        checkAvailability();
+    });
+
+    //Button More Vaccines
+    document.getElementById("multiplicator").addEventListener("click", () => {
+        incrementMultiplicator();
+        score = score - multiplicatorPrice;
+        scoreHTML.innerHTML= "Vaccine rate:  " + score;
+        checkAvailability();
+        multiplicatorPrice = multiplicatorPrice * factor**2;
+        factor = factor * 2;
+        document.getElementById("multiplicator").innerHTML = factor+"x more vaccines/click - Cost: "+multiplicatorPrice;
+        b_multiplicator.disabled = true;
+    });
+
+    //Button click(s)/s
     document.getElementById("autoClick").addEventListener("click", () => {
         score = score - autoClickPrice;
         scoreHTML.innerHTML= "Vaccine rate:  " + score;
@@ -88,6 +92,7 @@
         }, 1000);
     });
 
+    //Button Vaccination campaign
     document.getElementById("bonus").addEventListener("click", () => {
         score = score - bonusPrice;
         scoreHTML.innerHTML= "Vaccine rate:  " + score;
