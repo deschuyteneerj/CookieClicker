@@ -23,7 +23,7 @@ body {
 }
 
 #clickMe:hover{
-    filter: brightness(0.8);
+    filter: brightness(1);
 }
 
 #clickMe:active{
@@ -43,6 +43,7 @@ body {
     top: 20vh;
     left: 32vw;
     z-index: 2;
+    filter: brightness(0.9);
 }
 
 button:disabled,
