@@ -34,7 +34,7 @@
 
     //Function to increase the multiplicator
     function incrementMultiplicator(){
-        multiple = multiple * factor;
+        multiple = multiple * Math.floor(factor);
     }
 
     //Function to check the availibility of the buttons
@@ -72,9 +72,9 @@
         score = score - multiplicatorPrice;
         scoreHTML.innerHTML= "Vaccine rate:  " + score;
         checkAvailability();
-        multiplicatorPrice = multiplicatorPrice * factor**2;
-        factor = factor * 2;
-        document.getElementById("multiplicator").innerHTML = factor+"x more vaccines/click - Cost: "+multiplicatorPrice;
+        multiplicatorPrice = multiplicatorPrice * Math.floor(factor**2);
+        factor = factor * 1.1;
+        document.getElementById("multiplicator").innerHTML = Math.floor(factor)+"x more vaccines/click - Cost: "+multiplicatorPrice;
         b_multiplicator.disabled = true;
     });
 
@@ -83,7 +83,7 @@
         score = score - autoClickPrice;
         scoreHTML.innerHTML= "Vaccine rate:  " + score;
         b_autoClick.disabled = true;
-        autoClickPrice = autoClickPrice * 100;
+        autoClickPrice = autoClickPrice * 10 * Math.floor(factor);
         quantityOfAutoclick++;
         b_autoClick.innerHTML = quantityOfAutoclick+" click(s)/s - Cost: "+autoClickPrice;
         checkAvailability();
@@ -99,7 +99,7 @@
         document.getElementById('timer').style.visibility = "visible";
         b_bonus.disabled = true;
         bonusRunning = true;
-        bonusPrice = bonusPrice * 100;
+        bonusPrice = bonusPrice * 10 * Math.floor(factor);
         b_bonus.innerHTML= "Vaccination campaign - Cost " + bonusPrice;
         checkAvailability();
         bonus = 2;
